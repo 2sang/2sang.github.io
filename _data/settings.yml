@@ -13,8 +13,8 @@ menu:
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
 - {icon: 'github', link: 'https://www.github.com/2sang'}
-- {icon: 'linkedin', link: 'www.linkedin.com/in/sangsulee92'}
-- {icon: 'facebook', link: 'www.linkedin.com/in/sangsuleee92'}
+- {icon: 'linkedin', link: 'https://www.linkedin.com/in/sangsulee92'}
+- {icon: 'facebook', link: 'https://www.facebook.com/sangsuleee92'}
 - {icon: 'envelope', link: 'mailto:sangsulee92@gmail.com'}
 
 # Customize site text
