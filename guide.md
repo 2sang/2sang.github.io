@@ -2,53 +2,53 @@
 
 Lagrange is a minimalist Jekyll theme for running a personal blog or site for free through [Github Pages](https://pages.github.com/), or on your own server. Everything that you will ever need to know about this Jekyll theme is included in the README below, which you can also find in [the demo site](https://lenpaul.github.io/Lagrange/).
 
-![alt text](https://user-images.githubusercontent.com/8409329/32631384-17107870-c56e-11e7-932f-deeb7c12e4db.png "Lagrange Demo Image")
+![alt text](https://user-images.githubusercontent.com/8409329/32631384-17107870-c56e-11e7-932f-deeb7c12e4db.png 'Lagrange Demo Image')
 
 ## Notable features
 
-* Compatible with GitHub Pages.
+-   Compatible with GitHub Pages.
 
-* Support for Jekyll's built-in Sass/SCSS preprocessor and data files for making customizing easier.
+-   Support for Jekyll's built-in Sass/SCSS preprocessor and data files for making customizing easier.
 
-* [Google Analytics](https://www.google.com/analytics/) support.
+-   [Google Analytics](https://www.google.com/analytics/) support.
 
-* Commenting support powered by [Disqus](https://disqus.com/).
+-   Commenting support powered by [Disqus](https://disqus.com/).
 
-* Optimized for search engines.
+-   Optimized for search engines.
 
-* LaTeX support through [MathJax](https://www.mathjax.org/).
+-   LaTeX support through [MathJax](https://www.mathjax.org/).
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-   1. [What is Jekyll](#what-is-jekyll)
-   2. [Never Used Jeykll Before?](#never-used-jekyll-before)
-2. [Installation](#installation)
-   1. [GitHub Pages Installation](#github-pages-installation)
-   2. [Local Installation](#local-installation)
-   3. [Directory Structure](#directory-structure)
-   4. [Starting From Scratch](#starting-from-scratch)
-3. [Configuration](#configuration)
-   1. [Sample Posts](#sample-posts)
-   2. [Site Variables](#site-variables)
-   3. [Adding Menu Pages](#adding-menu-pages)
-   4. [Posts](#posts)
-   5. [Layouts](#layouts)
-   6. [YAML Front Block Matter](#yaml-front-block-matter)
-4. [Features](#features)
-   1. [Design Considerations](#design-considerations)
-   2. [Disqus](#disqus)
-   3. [Google Analytics](#google-analytics)
-   4. [RSS Feeds](#rss-feeds)
-   5. [Social Media Icons](#social-media-icons)
-   6. [MathJax](#mathjax)
-   7. [Syntax Highlighting](#syntax-highlighting)
-   8. [Markdown](#markdown)
-5. [Everything Else](#everything-else)
-6. [Contributing](#Contributing)
-7. [Questions?](#questions)
-8. [Credits](#credits)
-9. [License](#license)
+1.  [Introduction](#introduction)
+    1.  [What is Jekyll](#what-is-jekyll)
+    2.  [Never Used Jeykll Before?](#never-used-jekyll-before)
+2.  [Installation](#installation)
+    1.  [GitHub Pages Installation](#github-pages-installation)
+    2.  [Local Installation](#local-installation)
+    3.  [Directory Structure](#directory-structure)
+    4.  [Starting From Scratch](#starting-from-scratch)
+3.  [Configuration](#configuration)
+    1.  [Sample Posts](#sample-posts)
+    2.  [Site Variables](#site-variables)
+    3.  [Adding Menu Pages](#adding-menu-pages)
+    4.  [Posts](#posts)
+    5.  [Layouts](#layouts)
+    6.  [YAML Front Block Matter](#yaml-front-block-matter)
+4.  [Features](#features)
+    1.  [Design Considerations](#design-considerations)
+    2.  [Disqus](#disqus)
+    3.  [Google Analytics](#google-analytics)
+    4.  [RSS Feeds](#rss-feeds)
+    5.  [Social Media Icons](#social-media-icons)
+    6.  [MathJax](#mathjax)
+    7.  [Syntax Highlighting](#syntax-highlighting)
+    8.  [Markdown](#markdown)
+5.  [Everything Else](#everything-else)
+6.  [Contributing](#Contributing)
+7.  [Questions?](#questions)
+8.  [Credits](#credits)
+9.  [License](#license)
 
 ## Introduction
 
@@ -183,11 +183,11 @@ RSS 2.0 is also supported through [RSS auto-discovery](http://www.rssboard.org/r
 
 To use RSS 2.0, ensure the following is done:
 
-* Uncomment the last two lines in the `_config.yml` file.
+-   Uncomment the last two lines in the `_config.yml` file.
 
-* In `_data/settings.yml`, under 'social', comment out the rss-square that points to `feed.xml`, and uncomment the rss-square that points to `rss-feed.xml`.
+-   In `_data/settings.yml`, under 'social', comment out the rss-square that points to `feed.xml`, and uncomment the rss-square that points to `rss-feed.xml`.
 
-* In `_includes/head.html`, comment out `{% feed_meta %}` and uncomment the line under the RSS 2.0 comment.
+-   In `_includes/head.html`, comment out `{% feed_meta %}` and uncomment the line under the RSS 2.0 comment.
 
 ### Social Media Icons
 
@@ -210,7 +210,7 @@ As always, Jekyll offers support for GitHub Flavored Markdown, which allows you 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
 [jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 
 ## Contributing
@@ -221,7 +221,7 @@ Lagrange has been designed as a base for users to customize and fit to their own
 
 ## Questions?
 
-This theme is completely free and open source software. You may use it however you want, as it is distributed under the [MIT License](http://choosealicense.com/licenses/mit/). If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=My%question%about%Lagrange%is:%&amp;via=paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new).
+This theme is completely free and open source software. You may use it however you want, as it is distributed under the [MIT License](http://choosealicense.com/licenses/mit/). If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=My%question%about%Lagrange%is:%&via=paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new).
 
 ## Credits
 
@@ -229,49 +229,49 @@ This theme is completely free and open source software. You may use it however y
 
 #### Paul Le
 
-* [www.lenpaul.com](http://lenpaul.com)
+-   [www.lenpaul.com](http://lenpaul.com)
 
-* [Twitter](https://twitter.com/paululele)
+-   [Twitter](https://twitter.com/paululele)
 
-* [GitHub](https://github.com/LeNPaul)
+-   [GitHub](https://github.com/LeNPaul)
 
 ### Contributors
 
-* [nikolalukovic](https://github.com/nikolalukovic)
+-   [nikolalukovic](https://github.com/nikolalukovic)
 
-* [gmemstr](https://github.com/gmemstr)
+-   [gmemstr](https://github.com/gmemstr)
 
-* [lynn9388](https://github.com/lynn9388)
+-   [lynn9388](https://github.com/lynn9388)
 
-* [robqiao](https://github.com/robqiao)
+-   [robqiao](https://github.com/robqiao)
 
-* [Mauladen](https://github.com/Mauladen)
+-   [Mauladen](https://github.com/Mauladen)
 
-* [dhanus](https://github.com/dhanus)
+-   [dhanus](https://github.com/dhanus)
 
-* [mlewand](https://github.com/mlewand)
+-   [mlewand](https://github.com/mlewand)
 
-* [Hguimaraes](https://github.com/Hguimaraes)
+-   [Hguimaraes](https://github.com/Hguimaraes)
 
-* [ilhamadun](https://github.com/ilhamadun)
+-   [ilhamadun](https://github.com/ilhamadun)
 
-* [brianclemens](https://github.com/brianclemens)
+-   [brianclemens](https://github.com/brianclemens)
 
-* [leyhline](https://github.com/leyhline)
+-   [leyhline](https://github.com/leyhline)
 
 ### Icons + Demo Images
 
-* [Death to Stock](https://deathtothestockphoto.com/)
+-   [Death to Stock](https://deathtothestockphoto.com/)
 
-* [Font Awesome](http://fontawesome.io/)
+-   [Font Awesome](http://fontawesome.io/)
 
 ### Other
 
-* [Jekyll](https://jekyllrb.com/)
+-   [Jekyll](https://jekyllrb.com/)
 
-* [Free Code Camp](https://www.freecodecamp.org)
+-   [Free Code Camp](https://www.freecodecamp.org)
 
-* [Khan Academy](https://www.khanacademy.org/)
+-   [Khan Academy](https://www.khanacademy.org/)
 
 ## License
 
