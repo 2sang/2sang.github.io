@@ -3,7 +3,7 @@ disqus:
   comments: true
   disqus_shortname: 'https-lenpaul-github-io-lagrange'
 
-google-ID: 'UA-112060364-1'
+google-ID: 'UA-120165586-1'
 
 menu:
 - {name: 'About', path: 'menu', url: 'about.html'}
