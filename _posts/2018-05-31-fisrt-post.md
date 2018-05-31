@@ -17,4 +17,4 @@ But there have been tons of excuses stopping me, like, why? what to write about?
 What if I harm people by giving wrong information? And I decided to just stop questioning myself.  
 
 With throwing all the execuses in front of me, I will write things. My English is still bad, but at least
-I can write things to people with what I want to talk about. Better late than never, right?
+I can write things to people with what I want to talk about. And, Better late than never, right?
