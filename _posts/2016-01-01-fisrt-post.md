@@ -13,7 +13,7 @@ If I can save your time, even a tiny seconds, that would be my pleasure.
 
 Quite often, I've heard the importance of note-taking habits, and it is something that 
 I've been always agreed with, especially as a novice junior developer myself.
-There have been tons of excuses, like, why? what to write about? Am I good enough to write post?
+But there have been tons of excuses stopping me, like, why? what to write about? Am I good enough to write post?
 What if I harm people by giving wrong information? And I decided to just stop questioning myself.  
 
 With throwing all the execuses in front of me, I will write things. My English is still bad, but at least
