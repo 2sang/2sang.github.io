@@ -1,17 +1,10 @@
 ---
 layout: page
-title: Welcome to Lagrange!
+title: Hi there!
+image: santamonica.jpg
 ---
 
-Hi there! 
-### Getting Started
+<img src="{{ site.github.url }}/assets/img/{{ page.image }}">
+> Santa Monica, CA
 
-[Getting Started]({{ site.github.url }}{% post_url 2015-10-10-getting-started %}): getting started with installing Lagrange, whether you are completely new to using Jekyll, or simply just migrating to a new Jekyll theme.
-
-### Example Content
-
-[Text and Formatting]({{ site.github.url }}{% post_url 2014-01-01-text-formatting-examples %})
-
-### Questions?
-
-This theme is completely free and open source software. You may use it however you want, as it is distributed under the [MIT License](http://choosealicense.com/licenses/mit/). If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=My%question%about%Lagrange%is:%&amp;via=paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new).
+I'm Sangsu Lee, a junior developer in South Korea.
