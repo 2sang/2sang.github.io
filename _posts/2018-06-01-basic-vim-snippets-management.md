@@ -15,7 +15,7 @@ by SirVer. And trust me, you'll love it.
 
 Snippets, which is one of the major features that most of the other IDEs have as a default.
 You've triggered them by hit \<TAB\>, or you used other key bindings that have been set as a trigger.
-![]()
+<img src="{{ site.github.url }}/assets/img/output.gif">
 
 ## [Codecademy](https://www.codecademy.com/)
 
