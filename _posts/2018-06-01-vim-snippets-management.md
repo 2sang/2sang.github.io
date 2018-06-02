@@ -9,32 +9,86 @@ image: vimlogo.jpg
 
 Welcome, Vim lovers!  
 [Ultisnips](https://github.com/SirVer/ultisnips)
-by SirVer, currently stands one of the most popular vim plugin.
-In this post, I'll share how I manage my snippets in everyday workflow, with Ultisnips.
+by SirVer, currently stands one of the most popular vim plugins.
+It provides concise, comprehensive snippet syntax which allows vim users to
+easily customize their snippets, and you can use python interpolation on snippet syntax as well.  
+But in this post, rather than introducing nice features of Ultisnips itself,  
+I'll share how I manage my vim snippets efficiently in everyday workflow, with Ultisnips.
 
-## Snippets
+## Snippets?
 
 <img src="{{ site.github.url }}/assets/img/gif_ultisnips.gif">
-Snippet expanding is one of popular features that most of the other IDEs have as a default.
+_Deoplete.nvim + snippet integration_
+
+Snippet expanding is one of the popular features that most of the other IDEs have as a default.
 Probably you've tried to triggered them by hitting \<tab\>, or you mapped other key binding
-for a trigger. Cool, now if you have your plugin installed on your vim, we're good to go.
+for snippets to span.  
+Obviously, this is something that we can't live without(At least for me).
 
+## Install Ultisnips, and default vim-snippets
 
-## Managing snippets in your dotfiles directory
+I assume we all know how to install plugin, by downloading source file,
+or using plugin manager. If you're not, I recommend you to give [vim-plug](https://github.com/junegunn/vim-plug) a try.
+Personally I've used [Vundle](https://github.com/VundleVim/Vundle.vim),
+but recently have switched it to [vim-plug](https://github.com/junegunn/vim-plug) because of
+its simplicity, and many nice features of it. Anyway,
+Here are github links for two plugins we're going to use today.
 
+-   [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
+-   [honza/vim-snippets](https://github.com/honza/vim-snippets)
 
-
-Ultisnips provides lot of great functionalities, an
-
-## Install
+in your ~/.vimrc :
 
 ```viml
-" Vim-plug
-set ai
-autocmd filetype
-hihi
+" If you prefer to use Vim-plug:
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" And inside of vim editor, execute :PlugInstall
 ```
 
+Reason why we install both two is, because Ultisnips itself does not provide
+off-the-shelf default snippets for every language, but we need to define them from the scratch.  
+That's why we need to have [honza/vim-snippets](https://github.com/honza/vim-snippets) which provides default
+boilerplate snippets of many languages. Repository has separate snippet directories, and
+each is compatible with Ultisnips, vim-snipmates, or other snippet plugins. We're going to tweak,
+or append our own snippets on top of existing ones.  
+Now that we have our plugins installed on your vim, we're good to go.
+default trigger for Ultisnips is, \<tab\>. try some snippets out,
+and if you want autocomplete features too, you can take a look
+[Deoplete](https://github.com/Shougo/deoplete.nvim), or
+[YCM](https://github.com/Valloric/YouCompleteMe) integration.
+
+## Managing snippets in your own snippets repository
+
+Setting the environment sucks.  
+Every time we change our development environment, laptop to desktop, or ssh into other machine,
+it definitely annoys us in many ways.  
+That's why we have our own repository named dotfiles for storing shell config file, .vimrc file,
+.tmux file, etc. No exception for snippets.  
+I think we'd better to have our own repository for snippets.  
+Steps are following:
+
+1.  Remove existing whole vim-snippets directory in your ~/.vim/bundle
+2.  Fork vim-snippets repository (you can notice there are many people like us, judging from the fork count)
+3.  Instead of putting original repository of vim-snippets, put yours.
+
+In shell :
+
+```bash
+rm -rf ~/.vim/bundle/vim-snippets
+# Or, you can remove the line "Plug 'honza/vim-snippets'" in .vimrc,
+# and execute :PlugClean in vim.
 ```
 
+In .vimrc :
+
+```viml
+" After fork the repository,
+Plug 'SirVer/ultisnips'
+Plug '<your_github_id>/vim-snippets'
+" And inside of vim editor, execute :PlugInstall again.
 ```
+
+Now we have our own snippet repository, ready to be updated, or deployed anywhere.
+Keep your repository updated with your own snippets, it'll be helpful.
+to pull your changes of your snippet repository from the other machine, just execute :PlugUpdate.
