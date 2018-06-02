@@ -61,7 +61,7 @@ and if you want autocomplete features also, you can take a look at
 
 ## Managing snippets in your own snippets repository
 
-Setting development environment is tedious, energy-consuming. I think we can all agree with this.
+Setting development environment is tedious, often time-consuming. I think we can all agree with this.
 Every time we change our environment like laptop to desktop, or ssh into other machine, we synchronize them
 so that our different environments work more consistently.
 But building such workflows definitely annoys us in many ways.  
