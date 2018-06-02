@@ -112,8 +112,7 @@ let g:UltiSnipsSnippetsDir="~/dotfiles/user_snippets"
 
 " Add your private snippet path to runtimepath
 set runtimepath^=~/dotfiles
-" When vim starts, Ultisnips tries to find snippet directories defined below,
-under the paths in runtimepath.
+" When vim starts, Ultisnips tries to find snippet directories defined below, under the paths in runtimepath.
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "user_snippets"]
 ```
 
