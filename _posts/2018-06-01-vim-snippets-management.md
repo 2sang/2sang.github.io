@@ -89,6 +89,7 @@ Plug '<your_github_id>/vim-snippets'
 " And inside of vim editor, execute :PlugInstall again.
 ```
 
-Now we have our own snippet repository, ready to be updated, or deployed anywhere.
+Now we have our own snippet repository, ready to be modified, or deployed anywhere.
 Keep your repository updated with your own snippets, it'll be helpful.
 to pull your changes of your snippet repository from the other machine, just execute :PlugUpdate.
+STILL ONGOING
