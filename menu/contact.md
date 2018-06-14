@@ -3,4 +3,7 @@ layout: page
 title: Contact
 ---
 
-If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=%40paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new)
+-   Github: [https://github.com/2sang](https://github.com/2sang)
+-   Linkedin: [https://linkedin.com/in/sangsulee92](https://linkedin.com/in/sangsulee92)
+-   facebook: [https://www.facebook.com/sangsuleee92](https://www.facebook.com/sangsuleee92)
+-   Email : sangsulee92@gmail.com
