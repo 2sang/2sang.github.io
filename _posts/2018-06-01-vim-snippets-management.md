@@ -125,4 +125,4 @@ nnoremap <leader>es :UltiSnipsEdit<cr>
 ```
 
 My leader key is bound to \<space\>, so \<space\>-e-s opens private snippet file for the
-current filetype on same terminal, splitted vim window.
+current filetype on same terminal, in splitted vim window.
