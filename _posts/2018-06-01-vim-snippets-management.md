@@ -22,8 +22,8 @@ _Deoplete.nvim + snippet integration_
 
 Snippet expanding is one of the popular features that most of the other IDEs have as a default.
 Probably you've tried to triggered them by hitting \<tab\>, or you mapped other key binding
-for snippets to span.  
-Obviously, this is something that we can't live without(At least for me).
+for snippets to span in many other IDEs.  
+Obviously this is something that we can't live without when we write code(At least for me).
 
 ## Install Ultisnips, and default vim-snippets
 
