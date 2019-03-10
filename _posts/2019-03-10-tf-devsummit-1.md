@@ -1,11 +1,13 @@
 ---
-layout: post
-title: "2019 TF dev summit"
+layout: post_without_img
+title: "2019 TF dev summit - Airbnb uses ML to help categorize its listing photos"
 author: "Sangsu Lee"
 categories: journal
 tags: [documentation,sample]
 image: tf-logo.png
 ---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b5Rs1ToD9aI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 2019 Tensorflow dev summit
 
