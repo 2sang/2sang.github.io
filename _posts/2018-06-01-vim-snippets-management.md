@@ -9,30 +9,30 @@ image: vimlogo.jpg
 
 Welcome, Vim lovers!  
 [Ultisnips](https://github.com/SirVer/ultisnips)
-by SirVer, currently stands one of the most popular vim plugin.
+by SirVer, currently stands among one of the most popular vim plugins.
 It provides concise, comprehensive snippet syntax which allows vim users to
-easily customize their snippets, and you can also use python interpolation on snippet syntax.  
-But in this post, rather than introducing nice features of Ultisnips itself,  
-I'll share how I manage my vim snippets efficiently in everyday workflow, with Ultisnips.
+easily customize their snippets, and we can also leverage python interpolation to snippet syntax.  
+In this post, rather than introducing the features of Ultisnips itself,  
+I'll share how I manage my Ultisnips snippets in everyday workflow.
 
 ## Snippets?
 
 <img src="{{ site.github.url }}/assets/img/gif_ultisnips.gif">
 _Deoplete.nvim + snippet integration_
 
-Snippet expanding is one of the popular features that most of the other IDEs have as a default.
-Probably you've tried to triggered them by hitting \<tab\>, or you mapped other key binding
-for snippets to span in many other IDEs.  
-Obviously this is something that we can't live without when we write code(At least for me).
+Snippet expanding is might be one of the popular features that most of the other IDEs have as a default.
+Probably you've tried to triggered them somehow like, by hitting \<TAB\>, or you map other key binding
+for snippets to span.
+Obviously this is something that we can't live without in daily development.
 
 ## Install Ultisnips, and default vim-snippets
 
-I assume we all know how to install plugin either by downloading source file,
+I assume we all have very basic knowledge about how to install vim plugin, either by downloading source file
 or using plugin manager. If you're not, I recommend you to give
 [this plugin manager](https://github.com/junegunn/vim-plug) a try.
-Personally I've used [Vundle](https://github.com/VundleVim/Vundle.vim),
-but recently have switched it to [vim-plug](https://github.com/junegunn/vim-plug) because of
-its simplicity, and many nice features of it. Anyway,
+Personally I had used [Vundle](https://github.com/VundleVim/Vundle.vim),
+but recently switched it to [vim-plug](https://github.com/junegunn/vim-plug) because of
+its simplicity and many nice features of it. Anyway,
 Here are github links for two plugins we're going to use today.
 
 -   [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
