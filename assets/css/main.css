@@ -35,12 +35,22 @@ body {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.3rem;
     line-height: 2.3rem;
 }
 
 h1 a {
     text-decoration: none;
+}
+
+h2 {
+    font-size: 1.8rem;
+    line-height: 2.0rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,6 +69,7 @@ a:hover {
 }
 
 img {
+    width: 715px;
     max-width: 100%;
     height: auto;
     border-radius: 5px;
@@ -83,7 +94,7 @@ hr {
 .container {
     margin-left: auto;
     margin-right: auto;
-    width: 615px;
+    width: 715px;
 }
 
 /*48em*/
@@ -270,14 +281,13 @@ hr {
   Code
 */
 
-code,
-pre {
-    font-family: 'Source Code Pro', monospace;
+code, pre {
+    font-family: 'consolas', ;
 }
 code {
     padding: 0.25em 0.5em;
-    font-size: 0.8rem;
-    background-color: #f5f5f5;
+    font-size: 0.95rem;
+    background-color: rgba(27,31,35,.05);
     border-radius: 3px;
 }
 pre {
@@ -285,19 +295,22 @@ pre {
     margin-top: 0;
     margin-bottom: 1rem;
     padding: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.90rem;
     line-height: 1.4;
     white-space: pre;
     white-space: pre-wrap;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: #f5f5f5;
+    background-color: rgba(27,31,35,.05);
+
 }
 pre code {
     padding: 0;
     font-size: 100%;
     color: inherit;
+    word-wrap: normal;
     background-color: transparent;
+    overflow-x: auto;
 }
 
 /* Pygments via Jekyll */
