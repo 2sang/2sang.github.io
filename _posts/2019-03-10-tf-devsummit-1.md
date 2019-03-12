@@ -9,7 +9,7 @@ image: tf-logo.png
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b5Rs1ToD9aI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
 
-## 2019 TF dev summit series
+### 2019 TF dev summit series
 Tensorflow Dev Summit 2019 발표 영상들을 코드와 함께 요약하고 있습니다.
 오역이나 의역, 빠진 내용들이 있을 수 있으며 더 자세한 컨퍼런스 정보는 [Tensorflow Dev Summit Event page](https://www.tensorflow.org/dev-summit) 에서 확인하실 수
 있습니다.  
