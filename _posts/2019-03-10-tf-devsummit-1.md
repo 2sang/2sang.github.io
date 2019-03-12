@@ -92,9 +92,9 @@ dataset = tfds.load('fashion_mnist', as_supervised=True)
 mnist_train, mnist_test = dataset['train'], dataset['test']
 
 def scale(image, label):
-    image = tf.cast(image, tf.float32)
-    image /= 255
-    return image, label
+  image = tf.cast(image, tf.float32)
+  image /= 255
+  return image, label
 
 mnist_train = mnist_train.map(scale).batch(64)
 mnist_test = mnist_test.map(scale).batch(64)
@@ -114,10 +114,10 @@ mnist_train = ...
 mnist_test = ...
 
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(512, activation=tf.nn.relu),
-    tf.keras.layers.Dropout(0.2),
-    tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 ])
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
@@ -139,10 +139,10 @@ dataset = ...
 strategy = tf.distribute.MirroredStrategy()
 with strategy.scope():
 
-    model = tf.keras.models.Sequential([
-        ...
-    ])
-    model.compile(...)
+  model = tf.keras.models.Sequential([
+      ...
+  ])
+  model.compile(...)
 
 model.fit(...)
 model.evaluate(...)
@@ -168,25 +168,25 @@ Tensorflow Hub는 설계하고자 하는 모델에 방대한 종류의 Pretraine
 # Sub-classing example
 # inherit tf.keras.Model class as a parent
 class Encoder(tf.keras.Model):
-    def __init__(self, vocab_size, embedding_dim,
-                 enc_units, batch_sz):
+  def __init__(self, vocab_size, embedding_dim,
+               enc_units, batch_sz):
 
-        super(Encoder, self).__init__()
-        self.batch_sz = batch_sz
-        self.enc_units = enc_units
-        self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
-        self.gru = tf.keras.layers.GRU(self.enc_units,
-                                       return_sequences=True,
-                                       return_state=True,
-                                       recurrent_initializer='glorot_uniform')
+    super(Encoder, self).__init__()
+    self.batch_sz = batch_sz
+    self.enc_units = enc_units
+    self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
+    self.gru = tf.keras.layers.GRU(self.enc_units,
+                                   return_sequences=True,
+                                   return_state=True,
+                                   recurrent_initializer='glorot_uniform')
 
-    def call(self, x, hidden):
-        x = self.embedding(x)
-        output, state = self.gru(x, initial_state=hidden)
-        return output, state
+  def call(self, x, hidden):
+    x = self.embedding(x)
+    output, state = self.gru(x, initial_state=hidden)
+    return output, state
 
-    def initialize_hidden_state(self):
-        return tf.zeros((self.batch_sz, self.enc_units))
+  def initialize_hidden_state(self):
+    return tf.zeros((self.batch_sz, self.enc_units))
 ```
 이렇게 사용자가 서브클래스에서 꼭 구현해야 하는 함수들(`__init__()`, `call()`)만 정의하면 
 외적인 부분은 프레임워크에서 맡아 처리하게 되므로 Computation algorithm을 구현하는데 집중할 수 있게 됩니다. 
@@ -196,19 +196,19 @@ class Encoder(tf.keras.Model):
 ```python
 # Custom loops example
 def train_step(inp, targ, enc_hidden):
-    loss = 0
-    with tf.GradientTape() as tape:
-        enc_output, enc_hidden = encoder(inp, enc_hidden)
-        dec_hidden = enc_hidden
-        dec_input = tf.expand_dims([targ_lang.word_index['<start>']]*BATCH_SIZE, 1)
+  loss = 0
+  with tf.GradientTape() as tape:
+    enc_output, enc_hidden = encoder(inp, enc_hidden)
+    dec_hidden = enc_hidden
+    dec_input = tf.expand_dims([targ_lang.word_index['<start>']]*BATCH_SIZE, 1)
 
-        for t in range(1, targ.shape[1]):
-            pred, dec_hidden, _ = decoder(dec_input, dec_hidden, enc_output)
-            loss += loss_function(targ[:, t], pred)
+    for t in range(1, targ.shape[1]):
+      pred, dec_hidden, _ = decoder(dec_input, dec_hidden, enc_output)
+      loss += loss_function(targ[:, t], pred)
 
-            dec_input = tf.expand_dims(targ[:, t], 1)
-        batch_loss = (loss / int(targ.shape[1]))
-        variables = encoder.trainable_variables + decoder.trainable_variables
+      dec_input = tf.expand_dims(targ[:, t], 1)
+    batch_loss = (loss / int(targ.shape[1]))
+    variables = encoder.trainable_variables + decoder.trainable_variables
 ```
 
 ### Tensorboard
@@ -240,9 +240,9 @@ Tensorflow 2.0에서는 모든 Python 커맨드가 즉시 실행되며, Define-a
 또 코드 작성 뿐만 아니라 디버깅도 굉장히 쉬워집니다.
 ```python
 def f(x):
-    while tf.reduce_sum(x) > 1:  # Control flow runs eagerly
-        x = tf.tanh(x)
-    return x
+  while tf.reduce_sum(x) > 1:  # Control flow runs eagerly
+    x = tf.tanh(x)
+  return x
 
 f(tf.random.uniform([10])  # Immediately outputs a value
 ```
@@ -255,7 +255,7 @@ Eager mode에서 개발을 마치고 나면 최종적으로는 모델을 GPU, TP
 ```python
 @tf.function
 def f(x):  # And now this function will become a graph
-    ...
+  ...
 ```
 
 ### Debuggings in Graph mode
