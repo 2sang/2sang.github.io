@@ -138,7 +138,7 @@ model.evaluate(...)
 ```
 
 ### Pretrained network with Tensorflow Hub
-(gif그림)
+![out](https://user-images.githubusercontent.com/25409073/54168561-805da900-44b2-11e9-83dd-6cb5b30b2b2f.gif)
 Pretrained model로부터 시작하는 것 또한 컴퓨팅 자원을 아끼는데 도움이 됩니다.
 Tensorflow Hub는 설계하고자 하는 모델에 방대한 종류의 Pretrained component를 끼워서 사용할 수 있고,
 또 특정한 데이터셋에 맞게 fine-tune 시킬 수도 있습니다.  
@@ -201,10 +201,11 @@ def train_step(inp, targ, enc_hidden):
 ```
 
 ### Tensorboard
-(tensorboard gif) 
+![out](https://user-images.githubusercontent.com/25409073/54168655-fbbf5a80-44b2-11e9-8b5a-d41ec1634dcb.gif)  
+
 Keras로 작성한 모델이나, 더 복잡한 모델들도 훈련 과정, 결과를 보고 분석하는 것이
 굉장히 중요할 수 있습니다. 이를 위해 Tensorboard가 다양한 시각화를 제공하며
-Colab과 Jupyter notebook에서 Tensorboard의 통합된 인터페이스를 볼 수 있게 됩니다.
+Colab, 그리고 Jupyter notebook에서 Tensorboard의 통합된 인터페이스를 볼 수 있게 됩니다.
 
 
 ### Tensorflow 2.0
@@ -220,6 +221,7 @@ Alpha version을 설치해 지금 바로 사용할 수 있습니다.
 ## Research, Prototyping, Production - Megan Kacholia
 ![image](https://user-images.githubusercontent.com/25409073/54139897-dfe19780-4465-11e9-9eac-8420214def5c.png)  
 
+### Eager Execution
 연구자들은 많은 State-of-the-art 논문의 실험에 Tensorflow를 사용하고 있으며,
 **Eager execution**은 여러 실험들에 꼭 필요한 유연성을 제공하게 됩니다.
 Tensorflow 2.0에서는 모든 Python 커맨드가 즉시 실행되며, Define-and-run 방식이 아닌 
@@ -234,16 +236,73 @@ def f(x):
 f(tf.random.uniform([10])  # Immediately outputs a value
 ```
 
+### Eager mode <=> Graph mode conversion
 Eager mode에서 개발을 마치고 나면 최종적으로는 모델을 GPU, TPU, 혹은 다른 하드웨어에
-올려 배포하게 됩니다. `@tf.function`은 Eager mode에서 Graph로의 변환을 도와주는 모듈입니다.
-개발할 때는 Eager mode로 python control flow, `print`구문, `assert`구문 등 어떤 직관적인 툴을 사용하다가도
-언제든지 필요할 때 함수를 Graph로 변환할 수 있게 됩니다. 다음은 `@tf.function` 데코레이터의 사용 예입니다:
+올려 배포하게 됩니다. `@tf.function`은 Eager mode에서의 함수에서 Graph로의 변환을 도와주는 모듈입니다.
+개발할 때는 Eager mode로 Python control flow, `print`구문, `assert`구문 등 어떤 직관적인 툴을 사용하다가도
+배포를 위해, 혹은 언제든지 필요할 때 함수를 Graph로 변환할 수 있게 됩니다. 다음은 `@tf.function` 데코레이터의 사용 예입니다:
 ```python
 @tf.function
 def f(x):  # And now this function will become a graph
     ...
 ```
 
+### Debuggings in Graph mode
+![image](https://user-images.githubusercontent.com/25409073/54143867-0dcada00-446e-11e9-846a-99929711ab83.png)  
+
+Eager mode 뿐만 아니라 Graph에서의 디버깅도 물론 중요하게 생각했습니다.
+에러의 원인을 정말 알기 힘들었던 Tensorflow의 Graph에도
+모델 코드의 몇 번째 라인에서 문제가 발생했는지, 어떤 에러인지 간결하고 정확하게 알려줌으로써
+에러 메시지를 이해하기 쉽도록 했으며 사용자들의 빠른 원인 분석을 도와주고, 계속해서 
+모델 구축을 진행할 수 있도록 했습니다.  
+<br />
+
+### Performance
+라이브러리의 성능, 즉 Performance는 Tensorflow 사용자들에게 굉장히 흥미롭고 관심있는 주제입니다.
+![image](https://user-images.githubusercontent.com/25409073/54145396-47511480-4471-11e9-9fd5-4fad8e99b2da.png)
+라이브러리의 core performance는 지금까지도 계속해서 높아지고 있습니다.
+위와 같이 여러 Device 위에서의 연산 속도가 작년과 대비해 적지 않은 향상이 있었고,
+Tensorflow 2.0에서도 또한 라이브러리의 성능은 계속해서 큰 관심거리와 프레임워크의 주요 목표가 될 것입니다.  
+<br />
+### Add-on libraries
+![image](https://user-images.githubusercontent.com/25409073/54145304-107afe80-4471-11e9-91f0-ca181eaf0dca.png)
+위와 같이 연구자와 개발자가 유용하게 사용할 수 있는 Add-on library들도 있습니다. 모델에 유연성을 가져다 주면서도
+더 쉽고 빠르게 상황에 맞는 특정 문제들을 해결하는데 도움을 줄 수 있습니다.  
+<br />
+
+### Real-world applications
+딥러닝 연구는 지금도 계속해서 Tensorflow와 함께 현실 세계에 적용되고 있습니다.
+![image](https://user-images.githubusercontent.com/25409073/54146425-4d47f500-4473-11e9-82d1-7834cd516f27.png)
+위는 구글에서의 몇 가지 어플리케이션들의 예입니다. 데이터 센터에는 더 효율적인 통제 시스템을
+구축해 에너지를 아낄 수 있게 되었고, Google map에서의 위치 보정, Google Pixel에서 Depth estimation으로 사진 속
+인물의 배경을 out-focusing하기도 합니다.
 
 
+### Deploying on any platform
+앞서 설명한 Real-world application을 실제로 현실에 적용하기 위해서는 
+Researching - Prototyping - Launching - Production의 프로세스 안에서의 모델을 생각해야 합니다.
+이 과정들은 Tensorflow가 가장 중요하다고 여겨왔던 것들이기도 하고, 또 프레임워크의 가장 큰 장점이기도 합니다.
+![image](https://user-images.githubusercontent.com/25409073/54169186-ffec7780-44b4-11e9-8de0-d86da6ff06f4.png)
 
+Tensorflow를 사용해 우리가 만든 모델이 많은 플랫폼 위에서 지금도 잘 작동하고 있으며
+서버, 클라우드, 모바일, 또는 다른 첨단 기기들이나 브라우저 위에서도 문제없이 잘 작동할 수 있도록 할 것입니다.
+
+### Tensorflow Extended
+![image](https://user-images.githubusercontent.com/25409073/54169726-4511a900-44b7-11e9-8f99-fba6f28cab7c.png)
+**Tensorflow Extended**는 Machine learning lifecycle의 주기 하나 하나, 즉 데이터셋을 불러오고, 변환하고, 모델을 만들고, 배포하는 
+과정까지의 독립적인 과정을 관리하는 **End-to-End** 플랫폼입니다.
+오렌지색으로 표시된 컴포넌트들은 공개되어 있으며, 위의 컴포넌트들은 지금도
+천여개 이상의 구글의 핵심 제품들 안에서 사용되고 있습니다.  
+<br />
+
+![image](https://user-images.githubusercontent.com/25409073/54170225-30361500-44b9-11e9-928a-c8f37556f5ec.png)
+컴포넌트들은 사실 일부분입니다. 2019년은 이 컴포넌트들을 모두 합쳐 통합된 End-to-End platform을 
+여러분들께 제공해줄 수 있는 해가 될 것입니다. 가장 먼저 Apache Airflow, Kubeflow, 심지어 raw Kubernetes 
+등 어떤 Integrated Orchestrator라도 가져와 metadata store로 이 컴포넌트들과 합쳐질 수 있습니다.
+결과적으로 Tensorflow의 Experiments, Experimentation, Experiment Tracking, Model comparison 등 
+고수준의 기능들을 사용할 수 있게 됩니다.  
+<br />
+
+
+*여기까지 총 31분 중 20분까지의 요약이며 이후의 내용(TF Lite, TF.js, Swift, Open source community..)들은 
+이후 별도 세션에서 더 자세히 다루므로 이 포스트에서는 생략하였습니다.*

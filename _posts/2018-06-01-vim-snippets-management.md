@@ -9,10 +9,10 @@ image: vimlogo.jpg
 
 Welcome, Vim lovers!  
 [Ultisnips](https://github.com/SirVer/ultisnips)
-by SirVer, currently stands among one of the most popular vim plugins.
-It provides concise, comprehensive snippet syntax which allows vim users to
+by SirVer, currently stands among the most popular vim plugins.
+It provides concise, comprehensive snippet syntax that allows vim users to
 easily customize their snippets, and we can also leverage python interpolation to snippet syntax.  
-In this post, rather than introducing the features of Ultisnips itself,  
+In this post, rather than introducing the features of Ultisnips itself, 
 I'll share how I manage my Ultisnips snippets in everyday workflow.
 
 ## Snippets?
