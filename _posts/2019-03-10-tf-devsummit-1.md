@@ -1,13 +1,13 @@
 ---
 layout: post_without_img
-title: "[WIP]2019 TF dev summit (1) - Keynote"
+title: "2019 TF dev summit(1) - Keynote"
 author: "Sangsu Lee"
 categories: journal
 tags: [documentation,sample]
 image: tf-logo.png
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b5Rs1ToD9aI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b5Rs1ToD9aI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
 
 ## 2019 TF dev summit series
 Tensorflow Dev Summit 2019 발표 영상들을 코드와 함께 요약하고 있습니다.
@@ -15,7 +15,7 @@ Tensorflow Dev Summit 2019 발표 영상들을 코드와 함께 요약하고 있
 있습니다.  
 
 **[01 - Keynote]()**  
-[02 - Introducing Tensorflow 2.0 and its high-level APIs]()  
+[02 - Introducing Tensorflow 2.0 and its high-level APIs]({% post_url 2019-03-12-tf-devsummit-2 %})  
 03 - Airbnb uses machine learning to help categorize its listing photos  
 04 - tf.function and Autograph  
 05 - Tensorflow Datasets  
@@ -29,9 +29,6 @@ Tensorflow Dev Summit 2019 발표 영상들을 코드와 함께 요약하고 있
 13 - Building a Visual Debugging Tool for ML - TF.js in Interactive Visual Analytics  
 14 - Improving Text in Tensorflow  
 15 - Upgrade your existing code for Tensorflow 2.0  
-
-
-
 <br />
 
 ## Keynote - Megan Kacholia
