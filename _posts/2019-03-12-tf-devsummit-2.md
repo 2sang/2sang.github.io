@@ -53,7 +53,7 @@ Tensorflow로 아주 많은 것을 할 수 있었지만, Tensorflow를 **어떻�
 그래서, 어떤 점이 바뀌었을까요?  
 <br />
 
-### TF 2.0 - Usability
+### Usability, Clarity, Flexibility
 ![image](https://user-images.githubusercontent.com/25409073/54215618-93608f80-452b-11e9-99ee-9482d0d5d241.png)  
 
 저희가 Tensorflow 2.0을 만들 때 가장 중점적으로 고려했던 부분이 바로 사용의 편리함, Usability입니다.
@@ -75,7 +75,6 @@ Tensorflow가 그래프를 버린걸까요? 사실 그렇지는 않습니다.
 단지 조금 더 쉬워졌을 뿐입니다.  
 <br />
 
-### TF 2.0 - Clarity
 ![image](https://user-images.githubusercontent.com/25409073/54215656-a2474200-452b-11e9-9dbe-7ae31ecef6cc.png)  
 
 Tensorflow 2.0은 Major release이므로, 이제 버릴 것들은 버려야 했습니다. 중복된 기능들을 삭제했고 API들을 통합했습니다.
@@ -84,7 +83,6 @@ API가 사용자들에게 더 일관성있게 보일 수 있도록 신경썼으�
 모델의 **Exchange format**도 정의했습니다.  
 <br />
 
-### TF 2.0 - Flexibility
 ![image](https://user-images.githubusercontent.com/25409073/54215690-b3904e80-452b-11e9-9906-2e506f14f454.png)  
 
 그렇게 2.0 릴리즈에서 많은 것들을 버리게 되면서 Tensorflow는 훨씬 더 유연해집니다.
@@ -223,25 +221,58 @@ Estimator는 아주 강력한 기계에 비유할 수 있습니다. 하지만 **
 Production Serving에 이르기까지의 모든 과정을 한번에 해결하도록 했습니다.
 
 ### tf.keras in TF 1.x, TF 2.x
-다음은 Tensorflow 1.x와 2.0에서의 tf.keras 모델입니다.
+다음은 Tensorflow 1.x와 2.0에서의 tf.keras 문법입니다.
 ![image](https://user-images.githubusercontent.com/25409073/54213992-c3f2fa00-4528-11e9-875d-c2b9feb71eea.png)  
 알아채신 분도 계시겠지만, 두 코드는 완벽히 동일합니다.
-그렇다면, tf.keras는 1.x에서 넘어오면서 어떻게 바뀌었을까요?
-그러면 어떤 것이 달라ㅈ
+그렇다면, tf.keras의 문법은 1.x에서 넘어오면서 어떤 점이 바뀌었을까요?
 
+사실 Tensorflow 2.0에서 새롭게 제공하는 모든 기능들을 tf.keras의 인터페이스 안에서 합치기 위해
+정말 많은 노력들이 있었습니다. 예를 들어 위의 두 코드는 완벽히 일치하더라도, 1.13버전에서는 Graph 기반의 모델이
+세션 안에서 생성되고 실행되는 반면, 2.0에서는 같은 모델이 Eager mode에서 실행됩니다.
 
+### Debugging with Eager
+그렇게 되면서, Eager mode의 장점을 온전히 tf.keras의 context 안에서 사용할 수 있게 됩니다.
+```python
+data = tf.data.TFRecordDataset(['file1', 'file2'])
+data = data.map(parse_fn).batch(32)
 
+for row in data.take(3):
+  print(row)
 
+>>> (<tf.Tensor: id=38, shape=(32, 32, 28), dtype=float64, numpy=
+    array([[ 0.070588,  0.494117,  0.533333,  0.686274,
+             0.650980,  1.      ,  0.968627,  0.498039]])>...
+model.fit(data, epochs=1)
+```
+Input pipeline에서의 dataset이 보통의 **numpy array**처럼 행동하는 것을
+볼 수 있습니다. 디버깅이 쉬워지며 Keras model에도 아주 자연스럽게 끼어들어가게 됩니다.
 
+## Dynamic control with Eager
+데이터셋 자체도 최적화되었습니다.
+Graph의 장점을 살려 Eager context 안에서도 최소한의 비용으로 데이터셋을 순회할 수 있도록 
+라이브러리가 최적화되었습니다. Eager는 프로토타이핑과 디버깅을 쉽게 해 주고,  tf.keras가
+우리가 모델을 더 잘 볼 수 있도록 **라이브러리 뒤에서 자동으로** Eager에게 친숙한 함수들을 만들어 줍니다.
+마지막으로 Tensorflow runtime이 유기적으로 성능 최적화와 확장성을 고려해 줍니다.
+**또한 tf.keras의 모델 내부도 명시적으로 Eager mode로 실행시키는 것도 가능합니다.**
 
+```python
+class Dynamic(tf.keras.layers.Layer):
+  def call(self, inputs):
+    if tf.reduce_max(inputs) < 10:
+      inputs = inputs * 5
+    return inputs
 
+  model = tf.keras.models.Sequential([..., Dynamic(10), ...])
 
+  model.compile(..., run_eagerly=True)
+  model.fit(x_train, y_train, epochs=5)
+```
 
-
-
-
-
-
+이 예제에서도 모델 컴파일`model.compile(..., run_eagerly=True)`시에 
+인자로 `run_eagerly`를 명시했습니다. 이렇게 되면  모델 내부에서도 Python control flow, Eager mode를 활용할 수 있습니다.  
+(이 인자는 성능을 위해 기본값이 False로 되어 있으나, 값을 주면
+Keras Model 안에서도 Eager mode처럼 특정 레이어를 거친 뒤 값처럼 모델 내부에서 사용되는 변수도 찍어서 확인할 수
+있게 됩니다. 더 자세한 내용은 [Tensorflow tf.keras.model API](https://www.tensorflow.org/api_docs/python/tf/keras/models/Model#run_eagerly)를 확인해 주세요.)
 
 
 
