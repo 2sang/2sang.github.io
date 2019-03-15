@@ -1,6 +1,6 @@
 ---
 layout: post_without_img
-title: "[WIP]2019 TF dev summit(2) - Introducing Tensorflow 2.0 and its high-level APIs"
+title: "2019 TF dev summit(2) - Introducing Tensorflow 2.0 and its high-level APIs"
 author: "Sangsu Lee"
 categories: journal
 tags: [documentation,sample]
