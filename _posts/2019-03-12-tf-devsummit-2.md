@@ -32,24 +32,26 @@ Tensorflow Dev Summit 2019 발표 영상들을 코드와 함께 요약하고 있
 <br />
 
 ## Introducing Tensorflow 2.0 - Martin Wicke
+![image](https://user-images.githubusercontent.com/25409073/54407136-029ed500-4720-11e9-9a83-44e836f0e3fd.png)  
+
 ### Painful moments
-Tensorflow는 가끔씩 사용하기 고통스러웠고, 또 어려웠습니다.
+Tensorflow는 가끔씩 사용하기 조금 고통스러웠고 어려웠습니다.
 ![image](https://user-images.githubusercontent.com/25409073/54179727-fecf4080-44dc-11e9-9e1a-0989133cde8b.png)  
 
-**Session**을 사용하는 것은 평범한 파이썬 유저인 우리들에게 자연스럽지는 않았고,
-또 Tensorflow가 성장하면서 계속해서 라이브러리가 복잡해지고 헷깔리기 시작했습니다. 
+위처럼 **Session**을 사용하는 것은 평범한 파이썬 유저인 우리들에게 너무 부자연스러웠고
+Tensorflow가 성장하면서도 계속해서 라이브러리가 복잡해지고 헷깔리기 시작했습니다. 
 Tensorflow로 아주 많은 것을 할 수 있었지만, Tensorflow를 **어떻게** 사용하는 것이
 가장 잘 사용하는 것인지는 확실하지 않았습니다.
 
 ![image](https://user-images.githubusercontent.com/25409073/54178470-448a0a00-44d9-11e9-92ce-b942ff8d0141.png)  
 
-그렇게 Tensorflow가 발전하면서 저희도 정말 많이 배웠습니다. 사용자 입장에서의 빠른 프로토타이핑, 
+Tensorflow가 발전하면서 저희도 정말 많이 배웠습니다. 사용자 입장에서의 빠른 프로토타이핑, 
 그리고 쉬운 디버깅이 절실하게 필요하다는 것을 느꼈습니다. 
 
 ### Install
 ![image](https://user-images.githubusercontent.com/25409073/54215568-7fb52900-452b-11e9-8575-5dad799f41fd.png)  
 
-많은 것들이 보완된 Tensorflow 2.0 Alpha version을 릴리즈했고, 이 커맨드로 바로 설치해 실행할 수 있습니다.
+많은 것들이 보완된 Tensorflow 2.0 Alpha version가 오늘 릴리즈됐고, 이 커맨드로 바로 설치해 실행할 수 있습니다.
 그래서, 어떤 점이 바뀌었을까요?  
 <br />
 
@@ -124,8 +126,9 @@ $ tf_upgrade_v2 --infile cnn_model.py --outfile cnn_model_upgraded.py
 <br />
 
 ## High level APIs in Tensorflow 2.0 - Karmel Allison
+![image](https://user-images.githubusercontent.com/25409073/54407610-d421f980-4721-11e9-9242-d7f7973d4615.png)  
+
 ### High-level API
-![image](https://user-images.githubusercontent.com/25409073/54201052-196edd00-4510-11e9-9a05-fc7cc3589ea0.png)  
 
 High-level API의 개념에 대해 한번 생각해 볼 필요가 있습니다.
 기둥을 세우고, 벽을 세우고, 지붕을 덮듯이 우리가 집을 지을 때처럼
@@ -247,13 +250,13 @@ model.fit(data, epochs=1)
 Input pipeline에서의 dataset이 보통의 **numpy array**처럼 행동하는 것을
 볼 수 있습니다. 디버깅이 쉬워지며 Keras model에도 아주 자연스럽게 끼어들어가게 됩니다.
 
-## Dynamic control with Eager
-데이터셋 자체도 최적화되었습니다.
-Graph의 장점을 살려 Eager context 안에서도 최소한의 비용으로 데이터셋을 순회할 수 있도록 
-라이브러리가 최적화되었습니다. Eager는 프로토타이핑과 디버깅을 쉽게 해 주고,  tf.keras가
-우리가 모델을 더 잘 볼 수 있도록 **라이브러리 뒤에서 자동으로** Eager에게 친숙한 함수들을 만들어 줍니다.
+### Dynamic control with Eager
+데이터셋에도 성능 향상이 있습니다.
+Graph의 장점을 살려 Eager context 안에서도 빠르게 데이터셋을 순회할 수 있도록 
+라이브러리가 최적화되었습니다. Eager가 프로토타이핑과 디버깅을 쉽게 해 주는 동시에
+우리가 모델을 더 잘 볼 수 있도록 tf.keras는 보이지 않는 곳에서 Eager-friendly 함수들을 만들어 줍니다.
 마지막으로 Tensorflow runtime이 유기적으로 성능 최적화와 확장성을 고려해 줍니다.
-**또한 tf.keras의 모델 내부도 명시적으로 Eager mode로 실행시키는 것도 가능합니다.**
+**또한 tf.keras의 모델 내부 구현도 Eager mode로 실행시키는 것이 가능합니다.**
 
 ```python
 class Dynamic(tf.keras.layers.Layer):
@@ -268,11 +271,284 @@ class Dynamic(tf.keras.layers.Layer):
   model.fit(x_train, y_train, epochs=5)
 ```
 
-이 예제에서도 모델 컴파일`model.compile(..., run_eagerly=True)`시에 
-인자로 `run_eagerly`를 명시했습니다. 이렇게 되면  모델 내부에서도 Python control flow, Eager mode를 활용할 수 있습니다.  
-(이 인자는 성능을 위해 기본값이 False로 되어 있으나, 값을 주면
-Keras Model 안에서도 Eager mode처럼 특정 레이어를 거친 뒤 값처럼 모델 내부에서 사용되는 변수도 찍어서 확인할 수
+이 예제에서 모델 컴파일`model.compile(..., run_eagerly=True)`시에 
+인자로 `run_eagerly`를 명시했습니다. 이렇게 되면  모델 내부에서도 
+Python control flow, Eager mode를 활용할 수 있게 됩니다.  
+(이 인자는 성능 최적화를 위해 기본값이 False로 되어 있으나, 값을 주면
+Keras Model 안에서도 Eager mode처럼 특정 레이어를 지난 뒤의 값처럼 
+모델 내부에서 사용되는 변수도 찍어서 바로 확인할 수
 있게 됩니다. 더 자세한 내용은 [Tensorflow tf.keras.model API](https://www.tensorflow.org/api_docs/python/tf/keras/models/Model#run_eagerly)를 확인해 주세요.)
+
+### Consolidation under Keras
+ ![image](https://user-images.githubusercontent.com/25409073/54267871-5d6beb80-45bd-11e9-9f3c-db63d6f43bfb.png)
+ 2.0에서의 큰 변화들 중 하나는, **Keras를 중심으로** Tensorflow의 주요한 API들이 병합되었다는 것입니다.
+ 중복되는 클래스들을 삭제하고, 어떤 클래스를 사용해야 하는지, 언제 사용해야 하는지를
+ 알기 쉽도록 했습니다.
+ 
+
+### tf.keras.optimizer.\*
+```python
+# Optimizer example
+tf.keras.optimizers.{ Adadelta, Adagrad, Adam, 
+                      Adamax, Nadam, RMSProp, SGD }
+
+optimizer = tf.keras.optimizers.Adadelta(clipvalue=0.)
+
+# Hyperparameters are settable attributes
+optimizer.learning_rate = .3
+
+# Fully serializable
+config = optimizer.get_config()
+optimizer2 = tf.kears.optimizers.Adadelta.from_config(config)
+```
+이제 Tensorflow에는 위처럼 단 한 세트의 Optimizer들만 남겨집니다. Eager mode이든 
+아니든, 한 대의 머신이든 아니면 분산된 훈련 환경이든지 상관없이 Tensorflow의 모든 곳에 사용가능합니다. 
+이제 Python attribute를 다루듯이 Optimizer의 하이퍼파라미터를 설정할 수 있으며(`optimizer.learning_rate = .3`)
+네트워크의 가중치값과 Optimizer 설정값들을 Tensorflow의 `checkpoints` 포맷, 혹은
+Keras backend에서 사용하는 포맷으로 저장할 수 있습니다.
+
+
+### tf.keras.metrics.\*
+```python
+# Example subclassing Metrics
+class Lottery(tf.keras.metrics.Metrics):
+  def __init__(self, magic_numbers):
+    self.magic_numbers = self.add_weight(magic_numbers)
+  ...
+
+model.compile(
+  'sgd',
+  metrics=[Lottery([34, 11, 4, 20, 19, 85]),
+           tf.keras.metrics.TopKCategoricalAccuracy(k=5),
+           tf.keras.metrics.TruePositives()])
+```
+Evaluation을 위한 Metrics 또한 마찬가지로, 이전의 Tensorflow와 Keras를 
+모두 아우르는 한 세트의 metrics들만 남겨졌으며 Subclassing을 통해 커스터마이징이 가능합니다.
+
+### tf.keras.losses.\*
+```python
+# Example subclassing Loss
+class AllIsLost(tf.keras.losses.Loss):
+  def call(self, y_true, y_pred):
+    y_true = math_ops.cast(y_true, y_pred.dtype)
+    return tf.math.equal(y_pred, y_true)
+
+model.compile(
+  'sgd',
+  losses=[AllIsLost(),
+          'mse',
+          tf.keras.losses.Huber(delta=1.5)])
+```
+Loss 또한 가장 많이 쓰이는 loss들을 built-in으로 제공하는 동시에, 위의 코드처럼 
+클래스를 상속받아 임의의 loss를 만드는 것도 가능합니다.
+
+### tf.keras.layers.\*
+```python
+item_input = tf.keras.layers.Input(tensor=items, name='item_in')
+
+embedding_item = tf.keras.layers.Embedding(
+  num_items, mf_dim + model_layers[0] // 2,
+  embeddings_initializer=embeddings_initializer,
+  input_length=1, name='embedding_item')(item_input)
+
+pair_vector = tf.keras.layers.concatenate(
+  [embedding_user, embedding_item]
+```
+마지막으로 keras 스타일로 새롭게 추가된, 혹은 keras에서 그대로 넘어온 built-in layer들입니다.
+이들 역시 Class 기반이며 자유롭게 커스터마이징할 수 있습니다.
+
+### RNN layers
+RNN 계열의 Layer들은 Tensorflow 2.0부터 조금 특별해집니다.
+```python
+# TF1.x: RNN layers
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Embedding(1000, 64, input_length=10)
+
+if tf.test_is_gpu_available():
+  model.add(tf.keras.layers.CudnnLSTM(32))
+else:
+  model.add(tf.keras.layer.LSTM(32))
+```
+Tensorflow 1.x에서 LSTM과 GRU는 각각 여러 버전의 LSTM, 여러 버전의 GRU가 존재했습니다.
+사용자가 어떤 device를 사용하고 있느냐에 따라 최적의 퍼포먼스를 낼 수 있는
+별도의 Layer들이 따로 존재했고 이를 모델을 훈련하기에 앞서 사용자가 
+직접 최적의 Layer를 선택해주어야 했습니다.
+```python
+# TF2.0: RNN layers
+model = tf.keras.Sequential()
+model.add(tf.keras.layers.Embedding(1000, 64, input_length=10)
+
+# This will use a Cudnn kernel when a GPU is available, otherwise calls basic LSTM()
+model.add(tf.kears.layer.LSTM(32))
+```
+Tensorflow 2.0에서는 단 하나의 LSTM layer와, 단 하나의 GRU layer만 존재합니다.
+사용자가 device와 관련한 것들을 알 필요가 없도록 
+런타임에 Layer가 최적의 버전을 선택합니다. 위 코드에서는 사용가능한 GPU가 
+있다면 Cudnn 버전의 LSTM을 호출할 것이고, 그렇지 않다면 CPU 버전의 LSTM layer를 
+호출하게 됩니다.
+
+### Customizable Layer
+```python
+class Flip(tf.keras.layers.Layer):
+  def __init__(self, pivot=0, **kwargs):
+    super(Flip, self).__init__(**kwargs)
+    self.pivot = pivot
+
+  def call(self, inputs):
+    return self.pivot - inputs
+
+x = tf.keras.layers.Dense(units=10)(x_train)
+x = Flip(pivot=100)(x)
+```
+ Custom layer의 예시입니다. `tf.keras.layers.Layer`를 상속받고
+`__init__()`, `call()` 두개의 함수를 구현하면 됩니다. 
+
+### Tensorflow Addons
+![image](https://user-images.githubusercontent.com/25409073/54325452-9b145700-4645-11e9-81b7-0c4fd4643856.png)
+
+Tensorflow 커뮤니티 레포지토리인
+[**tensorflow/addons**](https://github.com/tensorflow/addons)에서는 복잡한 custom layer를 포함해서
+Tensorflow의 여러 base 클래스를 상속받아 구현된 여러 **실험적인** 커스텀 모듈(custom layers, metrics, losses ..)들을 
+모아놓은 레포지토리입니다. 이들을 쉽게 가져와 바로 사용하는 것이 가능합니다.
+
+### Keras Integration
+Tensorflow 2.0을 만들면서 가장 먼저 한 일이 Tensorflow의 API들을 간소화하고, 또 유기적으로 연결하는 것이었고,
+그 다음 **Keras를 중심으로** 기존 Tensorflow의 모든 기능들을 통합하는 것이었습니다.
+
+### Keras Integration - tf.feature_column
+기존 `tf.estimator`의 아주 큰 강점 중 하나는 **'Easily configurable structured data'**였습니다. 
+즉 다양한 형태의 데이터를 파싱해주는 재사용 가능한 data pipeline을 `tf.feature_column` API 를 활용해 
+아주 쉽게 설계할 수 있었습니다. 
+```python
+# Structured data parsing example using 'tf.feature_column'
+user_id = tf.feature_column.categorical_column_with_identity(
+                'user_id', num_buckets=10000)
+uid_embedding = tf.feature_column.embedding_column(user_id, 10)
+
+# 3 columns that will feed into keras model
+columns = [uid_embedding,
+           tf.feature_column.numeric_column('visits'),
+           tf.feature_column.numeric_column('clicks')]
+
+feature_layer = tf.keras.layers.DenseFeatures(columns)
+
+model = tf.keras.models.Sequential([feature_layer, ...])
+```
+이제 Tensorflow 2.0에서는 이 `tf.feature_column` API가 `tf.estimator` 뿐만 아니라 
+위 코드처럼 `tf.keras`의 model에도 호환가능합니다.
+
+### Keras Integration - Tensorboard
+이제 모델에 데이터를 넣고 훈련할 준비가 되었습니다. 모델 훈련 과정에서
+가장 많이 사랑받았던 Tensorflow의 툴 중 하나는 바로 **Tensorboard**입니다.
+```python
+tb_callback = tf.keras.callbacks.Tensorboard(log_dir=log_dir)
+
+model.fit(
+  x_train, y_train, epochs=5,
+  validation_data=[x_test, y_test],
+  callbacks=[tb_callback])
+```
+
+2.0에서 `tf.keras`에서의 Tensorboard 시각화는 단 한줄이면 충분합니다.
+위 코드처럼 keras model 훈련시에 **Tensorboard callback**을 추가하기만 하면,
+
+![image](https://user-images.githubusercontent.com/25409073/54328396-14657700-4651-11e9-8617-f07c0610b41c.png)  
+그림처럼 우리가 설계한 모델의 Training 과정 중 accuracy, loss값, Layer마다의 그래프 구조도 확인할 수 있게 됩니다.
+<br />
+
+또 한 가지가 더 있습니다.  
+
+![image](https://user-images.githubusercontent.com/25409073/54328478-66a69800-4651-11e9-8844-ca4c57239586.png)  
+ 모델의 **profile**을 분석할 수 있게 됩니다.  **profile** 탭에는
+모델이 어떤 device 위에서 연산이 실행되는지를 알려주는 device placement와, performance 정보를 더 
+자세히 살펴볼 수 있어 사용자가 데이터 파이프라인의 bottleneck을 최소화하는 방법을 찾는데 도움을 줄 수 있습니다.
+
+### Going big: Multi-GPU
+`tf.distribute.Strategy` API는 모델의 Training workflow를 분산시켜 처리하기 위해 만들어졌습니다.
+ 이 API는 기존 1.x에서도 존재했으나 Keras와 잘 호환되고 쉽게 사용할 수 있게, 또 굉장히 다양한 분산 환경을 
+ 지원하는 방향으로 재설계되었습니다. 역시 `MirroredStrategy()`처럼 바로 쓸 수 있는 built-in set을 제공합니다.
+```python
+# MirroredStrategy example:
+strategy = tf.distribute.MirroredStrategy()
+
+with strategy.scope():
+  model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(64, input_shape=[10]),
+    tf.kears.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')])
+  model.compile(optimizer='adam',
+                loss='categorical_crossentropy',
+                metrics=['accuracy'])
+  model.fit(...)
+  ...
+```
+API는 **strategy의 scope를 정의해 사용할 수 있습니다**. 위 코드에서는 `strategy`객체를 만든 뒤 
+scope를 정의해 그 안에 keras model을 컴파일하고 훈련시켜 Multi-gpu 환경에서의 분산 처리를 가능하도록 합니다.  
+
+keras 환경 안에서 이 distribution strategy API를 통합했기 때문에 단 몇 줄 만으로 많은 것을 할 수 있습니다.
+데이터를 batch 단위로 미리 불러오고(prefetch), `AllReduce`를 사용해 내가 정의한 변수들이 지금 사용가능한 모든 
+device들이 참조할 수 있게 함으로써 90% 이상의 분산 처리 효율을 달성할 수 있었습니다.
+
+즉, 이제 우리는 코드를 변경하거나 Keras의 편의성을 포기하지 않고도 단 몇 줄의 코드만으로
+모델의 속도를 높일 수 있게 되었습니다.
+
+### To SavedModel and beyond
+
+이제 모델을 트레이닝했으니 다른 시스템, 모바일 기기, 또는 다른 프로그래밍 언어 환경에서의
+모델 배포를 위해 패키징을 할 차례입니다.
+```python
+saved_model_path = tf.keras.experimental.export_saved_model(
+  model, '/path/to/model')
+new_model = tf.keras.experimental.load_from_saved_model(
+  saved_model_path)
+
+new_model.summary()
+```
+이제 Keras model은 모든 Tensorflow ecosystem에서 작동하는 
+serialization format인 `saved_model`로 바로 추출이 가능합니다.
+이 기능은 지금 Alpha version에서는 아직 완벽하지 않습니다만 곧 TF Serving이나 TF Lite 등에서
+바로 사용할 수 있는 모델을 Keras에서  바로 추출할 수 있게 될 것입니다.
+또 당연하게도 모델을 다시 불러와 재훈련시키거나 다른 작업을 하는 것도 가능합니다.
+
+### Coming soon: Multi-node synchronous
+여기까지 Tensorflow 2.0 Alpha version에서 추가되거나 바뀐 내용들이고, 마지막으로
+이제 몇 달 안에 곧 추가될 기능들을 간략히 소개해 드리겠습니다.
+
+```python
+# MultiWorkerMirroredStrategy example:
+strategy = tf.distribute.MultiWorkerMirroredStrategy()
+
+with strategy.scope():
+  model = tf.keras.models.Sequential([
+    ...
+  ])
+  model.compile(...)
+  model.fit(...)
+  ...
+```
+이전에 소개해드린 `MirroredStrategy()`는 하나의 머신 안에서 여러 Device들이 있는
+환경을 가정하고 설계된 API입니다. (한 대의 머신에 꼽혀있는 여러 GPU 카드를 모두 활용하고자 할 때)
+역시 똑같은 Keras model에서 `MultiWorkerMirroredStrategy()`를 사용하면 모델 연산을 여러 개의 
+노드, 즉 여러 대의 머신에 분산시켜 처리하게 됩니다. 이 API는 아직 개발중이며,
+nightly 버전에서는 지금도 사용가능합니다. 그리고 다음 release에서는 
+Colab, 혹은 Google cloud 바탕의 Multiple TPU에서의
+분산 처리를 위한 API 또한 곧 나올 것으로 기대하고 있습니다.
+
+### Onwards and upwards
+![image](https://user-images.githubusercontent.com/25409073/54406928-6379dd80-471f-11e9-9521-e23edf0947f8.png)
+
+그리고 2.0 final release를 향해 개발하면서 계속해서 keras에게 확장성을 부여하고 있습니다.
+현재 tf.estimator에서 지원되고 있는 비동기 방식의 training strategy를 `ParameterServerStretegy`라는 이름으로
+Keras에 통합할 예정이고, High-level API보다 더 높은 수준의 API를 위해 **Canned Estimator** API 또한 Keras API로 가져갈 것입니다.
+또 Google에서 사용되는 모델처럼 굉장히 거대한 모델은, 
+**모델 안의 variable들을 파티셔닝**해 여러 머신에서 처리할 수 있도록 할 예정입니다.
+
+
+
+
+
+
+
 
 
 

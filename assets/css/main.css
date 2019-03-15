@@ -45,7 +45,7 @@ h1 a {
 
 h2 {
     font-size: 1.8rem;
-    line-height: 2.0rem;
+    line-height: 2rem;
 }
 
 h3 {
@@ -53,7 +53,12 @@ h3 {
     line-height: 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Quattrocento Sans', sans-serif;
     color: #333;
 }
@@ -281,13 +286,14 @@ hr {
   Code
 */
 
-code, pre {
-    font-family: 'consolas', ;
+code,
+pre {
+    font-family: "consolas", "courier";
 }
 code {
     padding: 0.25em 0.5em;
     font-size: 0.95rem;
-    background-color: rgba(27,31,35,.05);
+    background-color: rgba(27, 31, 35, 0.05);
     border-radius: 3px;
 }
 pre {
@@ -295,14 +301,14 @@ pre {
     margin-top: 0;
     margin-bottom: 1rem;
     padding: 1rem;
-    font-size: 0.90rem;
+    font-size: 0.9rem;
     line-height: 1.4;
+    /*white-space: nowrap;*/
     white-space: pre;
-    white-space: pre-wrap;
+    overflow: auto;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: rgba(27,31,35,.05);
-
+    background-color: rgba(27, 31, 35, 0.05);
 }
 pre code {
     padding: 0;
